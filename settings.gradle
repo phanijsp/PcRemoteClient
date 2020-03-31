@@ -1,0 +1,2 @@
+rootProject.name='PcRemoteClient'
+include ':app'
