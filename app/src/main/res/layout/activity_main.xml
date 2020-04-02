@@ -4,17 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <EditText
+        android:id="@+id/editText_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:fontFamily="@font/comfortaa_bold"
+        android:hint="Ip Address"
+        android:background="@drawable/curved_bg"
+        android:padding="5dp"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/editText_pass"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@drawable/curved_bg"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:fontFamily="@font/comfortaa_bold"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editText_ip"
+        app:layout_constraintStart_toStartOf="@+id/editText_ip"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/conn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:backgroundTint="@color/gray"
+        android:fontFamily="@font/comfortaa_bold"
+        android:text="Connect"
+        android:textColor="@color/semi_white"
+        app:layout_constraintEnd_toEndOf="@+id/editText_pass"
+        app:layout_constraintStart_toStartOf="@+id/editText_pass"
+        app:layout_constraintTop_toBottomOf="@+id/editText_pass" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/comfortaa_bold"
+        android:text="PcRemoteClient"
+        android:textColor="@color/gray"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="@font/comfortaa_bold"
+        android:text="Server's"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editText_ip"
+        app:layout_constraintEnd_toEndOf="@+id/editText_ip"
+        app:layout_constraintStart_toStartOf="@+id/editText_ip" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintTop_toTopOf="@id/conn"
+        app:layout_constraintStart_toStartOf="@id/conn"
+        app:layout_constraintEnd_toEndOf="@id/conn"
+        app:layout_constraintBottom_toBottomOf="@id/conn"
+        app:lottie_fileName="loading2.json"
+        android:visibility="invisible"
+        />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        tools:ignore="VectorDrawableCompat" />
-
+        app:layout_constraintTop_toBottomOf="@id/editText_pass"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="bg.json"
+        app:lottie_loop="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
