@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void run(){
 				try {
-					Socket socket = new Socket("192.168.43.191",6969);
+					Socket socket = new Socket("192.168.0.8",6969);
 					ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 					while (true) {
 						final byte[] image_bytearr = (byte[])objectInputStream.readObject();

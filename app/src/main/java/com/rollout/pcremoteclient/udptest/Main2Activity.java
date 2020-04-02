@@ -37,7 +37,7 @@ public class Main2Activity extends AppCompatActivity {
 					String s = "Hello";
 					byte[] arr = s.getBytes();
 					try {
-						DatagramPacket datagramPacket = new DatagramPacket(arr,arr.length, InetAddress.getByName("192.168.43.191"),6969);
+						DatagramPacket datagramPacket = new DatagramPacket(arr,arr.length, InetAddress.getByName("192.168.0.8"),6969);
 						datagramSocket.send(datagramPacket);
 						Log.i("hehe","Sent it");
 					} catch (UnknownHostException e) {
