@@ -77,4 +77,30 @@
         app:layout_constraintBottom_toTopOf="@+id/editText_ip"
         app:layout_constraintEnd_toEndOf="@+id/editText_ip"
         app:layout_constraintStart_toStartOf="@+id/editText_ip" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintTop_toTopOf="@id/conn"
+        app:layout_constraintStart_toStartOf="@id/conn"
+        app:layout_constraintEnd_toEndOf="@id/conn"
+        app:layout_constraintBottom_toBottomOf="@id/conn"
+        app:lottie_fileName="loading2.json"
+        android:visibility="invisible"
+        />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_pass"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="bg.json"
+        app:lottie_loop="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
