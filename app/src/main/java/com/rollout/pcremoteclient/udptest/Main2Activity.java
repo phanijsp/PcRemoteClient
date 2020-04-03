@@ -34,17 +34,6 @@ public class Main2Activity extends AppCompatActivity {
 			Thread thread = new Thread(){
 				@Override
 				public void run(){
-					String s = "Hello";
-					byte[] arr = s.getBytes();
-					try {
-						DatagramPacket datagramPacket = new DatagramPacket(arr,arr.length, InetAddress.getByName("192.168.0.8"),6969);
-						datagramSocket.send(datagramPacket);
-						Log.i("hehe","Sent it");
-					} catch (UnknownHostException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
 					datagramSocket.beginReceiving();
 					final ByteArrayOutputStream[] byteArrayOutputStream = new ByteArrayOutputStream[1];
 					datagramSocket.addPacketListener(new PacketListener("file","Aditya","yes"){
