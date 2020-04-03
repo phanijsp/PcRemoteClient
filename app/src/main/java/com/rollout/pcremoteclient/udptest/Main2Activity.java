@@ -70,20 +70,6 @@ public class Main2Activity extends AppCompatActivity {
 									e.printStackTrace();
 								}
 							}
-							byte[] ack_data = new byte[1024];
-							Data_Object data_Object2 = new Data_Object("ack", null, null, null, null, null, null);
-							ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-							ObjectOutputStream objectOutputStream;
-							try {
-								objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-								objectOutputStream.writeObject(data_Object2);
-								ack_data = byteArrayOutputStream.toByteArray();
-								DatagramPacket ack_DatagramPacket = new DatagramPacket(ack_data, ack_data.length,
-										datagramPacket.getAddress(), datagramPacket.getPort());
-								datagramSocket.send(ack_DatagramPacket);
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
 						}
 					});
 				}
