@@ -6,8 +6,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.rollout.pcremoteclient.R;
 
@@ -23,12 +25,16 @@ import java.net.UnknownHostException;
 
 public class Main2Activity extends AppCompatActivity {
 	ImageView imageView;
+	TextView fps_display;
 	byte[] ack_data;
+	int fps_count;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main2);
 		init();
+		start_fps_meter();
+
 		try {
 			final XDatagramSocket datagramSocket = new XDatagramSocket(6969);
 			Thread thread = new Thread(){
@@ -58,6 +64,7 @@ public class Main2Activity extends AppCompatActivity {
 										@Override
 										public void run() {
 											imageView.setImageBitmap(bmp);
+											fps_count++;
 										}
 									});
 								} catch (IOException e) {
@@ -80,6 +87,8 @@ public class Main2Activity extends AppCompatActivity {
 		}
 	}
 	public void init(){
+		fps_count=0;
+		fps_display = (TextView) findViewById(R.id.fps);
 		imageView = (ImageView) findViewById(R.id.iter);
 		Data_Object data_object = new Data_Object("ack",null,null,null,null,null,null);
 		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -94,5 +103,28 @@ public class Main2Activity extends AppCompatActivity {
 	public DatagramPacket ack_packet(DatagramPacket datagramPacket){
 		DatagramPacket ack = new DatagramPacket(ack_data,ack_data.length,datagramPacket.getAddress(),datagramPacket.getPort());
 		return ack;
+	}
+	public void start_fps_meter(){
+		Thread threadx = new Thread(){
+			@Override
+			public void run(){
+				while (true){
+					if(fps_count!=0){
+						try{
+							fps_display.setText(String.valueOf(fps_count));
+							fps_count=0;
+						}catch (Exception e){
+							e.printStackTrace();
+						}
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		};
+		threadx.start();
 	}
 }
